@@ -45,7 +45,9 @@
             <th class="text-center">Score</th>
             <th class="text-center" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Actions</th>
           </tr>
-          <tr th:each="p:${listPatients}">
+          </thead>
+          <tbody>
+          <tr th:each="p : ${listPatients}">
             <td class="text-center" th:text="${p.id}"></td>
             <td class="text-center" th:text="${p.nom}"></td>
             <td class="text-center" th:text="${p.dateNaissance}"></td>
@@ -63,10 +65,10 @@
               </a>
             </td>
           </tr>
-          </thead>
+          </tbody>
         </table>
         <ul class="nav nav-pills d-flex justify-content-center flex-wrap gap-1">
-          <li th:each="value, item:${pages}">
+          <li th:each="value, item : ${pages}">
             <a th:href="@{/user/index(page=${item.index}, keyword=${keyword})}"
                th:class="${(currentPage==item.index) ? 'btn btn-primary ms-2' : 'btn btn-outline-primary ms-2'}"
                th:text="${1+item.index}"></a>
